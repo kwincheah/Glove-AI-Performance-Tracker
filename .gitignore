@@ -1,0 +1,40 @@
+## Visual Studio / .NET Ignore Rules
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+DebugLogs/
+
+# User-specific developer files
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+.vs/
+*.dotCover
+
+# Build & Installer Artifacts
+PerformanceTrackerInstaller/Debug/
+PerformanceTrackerInstaller/Release/
+*.msi
+*.msm
+*.msp
+
+# NuGet
+packages/*
+!packages/repositories.config
+*.nupkg
+
+# Temporary & Runtime Log Files
+*.tmp
+*.log
+AppData.dat
+AwakenGPUToolLog.txt
+
+# OS Generated Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

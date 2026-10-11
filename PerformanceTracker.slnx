@@ -1,0 +1,13 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="PerformanceTracker/PerformanceTracker.csproj" Id="60471434-da34-47c5-bac3-0533a9e94ee8">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="PerformanceTrackerInstaller/PerformanceTrackerInstaller.vdproj" Type="Installer">
+    <BuildType Solution="Debug|x64" Project="Release" />
+    <Build Solution="Release|x64" />
+  </Project>
+</Solution>

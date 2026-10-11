@@ -1,0 +1,118 @@
+﻿<Window x:Class="PerformanceTracker.LoadConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="System Setup" Height="572" Width="484"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <Style x:Key="ModernToggleStyle" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="border" CornerRadius="20" Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0D6EFD"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Foreground" Value="#555555"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Background" Value="#121215"/>
+            <Setter Property="Foreground" Value="#BBBBBB"/>
+            <Setter Property="BorderBrush" Value="#2A2A2E"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#1A1A1E" CornerRadius="20" BorderBrush="#333337" BorderThickness="1" Margin="29,10,10,10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="30" ShadowDepth="0" Opacity="0.8" Color="Black"/>
+        </Border.Effect>
+
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,0,0,25">
+                <TextBlock Text="CONFIGURATION" Foreground="White" FontSize="20" FontWeight="Black" HorizontalAlignment="Center"/>
+                <Border Height="2" Width="40" Background="#0D6EFD" Margin="0,10,0,0"/>
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <StackPanel VerticalAlignment="Top">
+
+                    <TextBlock Text="IMAGE AND MODEL LOADING" Foreground="#888888" FontSize="11" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Grid Height="40" Margin="0,0,0,25">
+                        <Border Background="#121215" CornerRadius="20" BorderBrush="#2A2A2E" BorderThickness="1"/>
+                        <UniformGrid Columns="2">
+                            <RadioButton x:Name="PreToggle" Content="PRE" IsChecked="True" Style="{StaticResource ModernToggleStyle}"/>
+                            <RadioButton x:Name="PostToggle" Content="POST" Style="{StaticResource ModernToggleStyle}"/>
+                        </UniformGrid>
+                    </Grid>
+
+                    <TextBlock Text="SOURCE DIRECTORY" Foreground="#888888" FontSize="11" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <Grid Margin="0,0,0,20">
+                        <TextBox x:Name="ImagePath" IsReadOnly="True" Text="Please select image folder" 
+                                 Background="#121215" Foreground="#BBBBBB" BorderBrush="#2A2A2E" Padding="12,8" VerticalContentAlignment="Center"/>
+                        <Button x:Name="ImageBrowse" Content="BROWSE" HorizontalAlignment="Right" Width="80" Height="30" Click="Browse_Click"
+                                 Background="#333337" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                    </Grid>
+
+                    <TextBlock Text="VISION MODEL (.bin)" Foreground="#888888" FontSize="11" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <Grid Margin="0,0,0,20">
+                        <TextBox x:Name="ModelPath" IsReadOnly="True" Text="Please select a .bin folder" 
+                                Background="#121215" Foreground="#BBBBBB" BorderBrush="#2A2A2E" Padding="12,8" VerticalContentAlignment="Center"/>
+                        <Button x:Name="ModelBrowse" Content="BROWSE" HorizontalAlignment="Right" Width="80" Height="30" Click="Browse_Click"
+                                Background="#333337" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                    </Grid>
+
+                    <StackPanel Margin="0,0,0,20">
+                        <CheckBox x:Name="EnableBlack" 
+                                  Content="SEPARATE MODEL FOR BLACK GLOVES" 
+                                  Foreground="#888888" FontSize="11" FontWeight="Bold"
+                                  VerticalContentAlignment="Center" Margin="0,0,0,10" />
+
+                        <StackPanel Visibility="{Binding IsChecked, ElementName=EnableBlack, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <TextBlock Text="SELECT BLACK GLOVES MODEL (.bin)" Foreground="#888888" FontSize="11" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <Grid Margin="0,0,0,20">
+                                <TextBox x:Name="BlackModelPath" IsReadOnly="True" Text="Please select a .bin folder" 
+                                            Background="#121215" Foreground="#BBBBBB" BorderBrush="#2A2A2E" Padding="12,8" VerticalContentAlignment="Center"/>
+                                <Button x:Name="BlackModelBrowse" Content="BROWSE" HorizontalAlignment="Right" Width="80" Height="30" Click="Browse_Click"
+                                            Background="#333337" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="CANCEL" Click="Cancel_Click" Background="Transparent" Foreground="#666666" FontWeight="Bold" Margin="0,0,20,0" BorderThickness="0" Cursor="Hand"/>
+                <Button Content="LOAD ENGINE" Click="Load_Click" Background="#0D6EFD" Foreground="White" FontWeight="Bold" Padding="25,12" Cursor="Hand">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="22"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
