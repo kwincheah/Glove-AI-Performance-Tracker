@@ -13,7 +13,7 @@
 
 ## 📌 Executive Summary & Industrial Context
 
-In modern high-speed glove manufacturing facilities, ensuring sub-millimeter defect detection across dozens of production lines simultaneously (e.g., lines `L73` through `L100`) requires continuous, automated validation of deep learning vision models against massive batches of production imagery.
+This is a AI Performance Tracker I developed based on the Hik Robot Vision Master SDK during my Internship. It mainly serve the purpose of getting the result for different set of folders of different test images of different production lines. I only have like 5 working days to develop this before my internship ends. As the SDK itself require a dongle to work. It basically means that I can no longer access or run the application.
 
 The **Glove AI Performance Tracker** is an industrial workstation application engineered to:
 - **Benchmark AI Detection Models**: Rapidly evaluate object detection and defect classification accuracy across simultaneous production lines.
