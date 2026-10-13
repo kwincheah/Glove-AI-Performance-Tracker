@@ -13,7 +13,7 @@
 
 ## 📌 Executive Summary & Industrial Context
 
-This is a AI Performance Tracker I developed based on the Hik Robot Vision Master SDK during my Internship. It mainly serve the purpose of getting the result for different set of folders of different test images of different production lines. I only have like 5 working days to develop this before my internship ends. As the SDK itself require a dongle to work. It basically means that I can no longer access or run the application.
+This is a AI Performance Tracker I developed based on the Hik Robot Vision Master SDK during my Internship at Bitmap Engineering. It mainly serve the purpose of getting the result for different set of folders of different test images of different production lines. 
 
 The **Glove AI Performance Tracker** is an industrial workstation application engineered to:
 - **Benchmark AI Detection Models**: Rapidly evaluate object detection and defect classification accuracy across simultaneous production lines.
